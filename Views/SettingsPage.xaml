@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CalculatorApp.Views.SettingsPage"
+             Title="Ayarlar">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20">
+
+            <!-- Sayfa Başlığı -->
+            <Label Text="Ayarlar" 
+                   Style="{StaticResource HeaderTitleStyle}" 
+                   Margin="0,0,0,10" />
+
+            <!-- Tema Seçimi Kartı -->
+            <Border Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="16"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource BtnNumberBgLight}, Dark={StaticResource BtnOperatorBgDark}}">
+
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Uygulama Teması" 
+                           FontSize="{StaticResource SettingsHeadingFontSize}" 
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+
+                    <Label Text="Hesap makinesinin renk temasını belirleyin. Seçilen tema anında tüm sayfalara uygulanır ve kaydedilir." 
+                           FontSize="{StaticResource SettingsSubFontSize}" 
+                           TextColor="{AppThemeBinding Light={StaticResource TextLightSecondary}, Dark={StaticResource TextDarkSecondary}}" />
+
+                    <BoxView HeightRequest="1" 
+                             Color="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}" 
+                             Margin="0,4" />
+
+                    <!-- Açık Tema -->
+                    <RadioButton x:Name="RadioLight"
+                                 GroupName="ThemeGroup"
+                                 Content="Açık (Light)"
+                                 TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}"
+                                 CheckedChanged="OnThemeRadioButtonCheckedChanged" />
+
+                    <!-- Koyu Tema -->
+                    <RadioButton x:Name="RadioDark"
+                                 GroupName="ThemeGroup"
+                                 Content="Koyu (Dark)"
+                                 TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}"
+                                 CheckedChanged="OnThemeRadioButtonCheckedChanged" />
+
+                    <!-- Sistem Teması -->
+                    <RadioButton x:Name="RadioSystem"
+                                 GroupName="ThemeGroup"
+                                 Content="Sistem ayarını kullan (Use system setting)"
+                                 TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}"
+                                 CheckedChanged="OnThemeRadioButtonCheckedChanged" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Hakkında Kartı -->
+            <Border Stroke="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}"
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="16"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource BtnNumberBgLight}, Dark={StaticResource BtnOperatorBgDark}}">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Hakkında" 
+                           FontSize="{StaticResource SettingsHeadingFontSize}" 
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+
+                    <Label Text="Windows Hesap Makinesi Klonu" 
+                           FontSize="{StaticResource SettingsSubFontSize}" 
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+
+                    <Label Text="BSM352 / BSM322 Görsel Programlama - Ödev 1&#10;Bartın Üniversitesi Bilgisayar Mühendisliği&#10;Teknoloji: .NET MAUI &amp; C#" 
+                           FontSize="{StaticResource SettingsSubFontSize}" 
+                           TextColor="{AppThemeBinding Light={StaticResource TextLightSecondary}, Dark={StaticResource TextDarkSecondary}}" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

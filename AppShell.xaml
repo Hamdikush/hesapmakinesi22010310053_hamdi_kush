@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CalculatorApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:views="clr-namespace:CalculatorApp.Views"
+    Title="Hesap Makinesi"
+    FlyoutBehavior="Flyout"
+    BackgroundColor="{AppThemeBinding Light={StaticResource PageBgLight}, Dark={StaticResource PageBgDark}}"
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource PageBgLight}, Dark={StaticResource PageBgDark}}"
+    ForegroundColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}"
+    TitleColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}">
+
+    <!-- Hamburger Menü Başlığı -->
+    <Shell.FlyoutHeader>
+        <Grid Padding="20,30,20,15" RowDefinitions="Auto,Auto">
+            <Label Grid.Row="0" Text="Hesap Makinesi"
+                   FontSize="18" FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+            <Label Grid.Row="1" Text="Bartın Üniversitesi BSM352"
+                   FontSize="12"
+                   TextColor="{AppThemeBinding Light={StaticResource TextLightSecondary}, Dark={StaticResource TextDarkSecondary}}" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- 1. Mod: Standart Hesap Makinesi -->
+    <FlyoutItem Title="Standart" Route="StandardPage">
+        <ShellContent ContentTemplate="{DataTemplate views:StandardPage}" />
+    </FlyoutItem>
+
+    <!-- 2. Mod: Bilimsel Hesap Makinesi -->
+    <FlyoutItem Title="Bilimsel" Route="ScientificPage">
+        <ShellContent ContentTemplate="{DataTemplate views:ScientificPage}" />
+    </FlyoutItem>
+
+    <!-- 3. Sayfa: Ayarlar (Settings) Sayfası -->
+    <FlyoutItem Title="Ayarlar (Settings)" Route="SettingsPage">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
+    </FlyoutItem>
+
+</Shell>

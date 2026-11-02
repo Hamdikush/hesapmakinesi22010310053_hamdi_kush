@@ -1,0 +1,26 @@
+## Visual Studio & .NET Temizliği
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+## MAUI Platform Çıktıları
+AppPackages/
+BundleArtifacts/
+*.apk
+*.aab
+*.msix
+*.appx
+*.appxbundle
+
+## Windows & Geçici Dosyalar
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.log

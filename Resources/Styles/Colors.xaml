@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ======================================================== -->
+    <!-- BSM352 HESAP MAKİNESİ - RENK PALETİ VE TEMA KAYNAKLARI   -->
+    <!-- ======================================================== -->
+
+    <!-- Sabit Renk Tanımları -->
+    <Color x:Key="PrimaryBlue">#0067C0</Color>
+    <Color x:Key="AccentCyan">#4CC2FF</Color>
+
+    <!-- Sayfa Arka Plan Renkleri (Koyu tema daha derin, tok ve modern yapıldı) -->
+    <Color x:Key="PageBgLight">#F3F3F3</Color>
+    <Color x:Key="PageBgDark">#181818</Color>
+
+    <!-- Metin Renkleri (Koyu temada net ve yüksek kontrastlı) -->
+    <Color x:Key="TextLightPrimary">#1A1A1A</Color>
+    <Color x:Key="TextDarkPrimary">#FFFFFF</Color>
+    <Color x:Key="TextLightSecondary">#5C5C5C</Color>
+    <Color x:Key="TextDarkSecondary">#B8B8B8</Color>
+
+    <!-- Rakam Buton Renkleri (Koyu temada belirgin, öne çıkan açık grafit gri) -->
+    <Color x:Key="BtnNumberBgLight">#FFFFFF</Color>
+    <Color x:Key="BtnNumberBgDark">#383838</Color>
+
+    <!-- İşlem (Operatör) Buton Renkleri (Rakamlardan ayırt edici renk) -->
+    <Color x:Key="BtnOperatorBgLight">#F9F9F9</Color>
+    <Color x:Key="BtnOperatorBgDark">#272727</Color>
+
+    <!-- Bilimsel Fonksiyon Buton Renkleri -->
+    <Color x:Key="BtnScientificBgLight">#EFEFEF</Color>
+    <Color x:Key="BtnScientificBgDark">#222222</Color>
+
+    <!-- Eşittir Buton Renkleri (Koyu temada parlayan elektrik mavisi) -->
+    <Color x:Key="BtnEqualBgLight">#0067C0</Color>
+    <Color x:Key="BtnEqualBgDark">#4CC2FF</Color>
+    <Color x:Key="BtnEqualTextLight">#FFFFFF</Color>
+    <Color x:Key="BtnEqualTextDark">#000000</Color>
+
+    <!-- Kenarlık ve Ayırıcı Renkler (Buton hatları netleşti) -->
+    <Color x:Key="BorderLight">#DCDCDC</Color>
+    <Color x:Key="BorderDark">#444444</Color>
+
+    <!-- Hata ve Uyarı Rengi -->
+    <Color x:Key="ErrorRed">#FF5252</Color>
+
+</ResourceDictionary>

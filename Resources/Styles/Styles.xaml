@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ======================================================== -->
+    <!-- BOYUT VE ÖLÇÜ KAYNAKLARI (SAYFALARDA SABİT SAYI YASAK)   -->
+    <!-- ======================================================== -->
+    <x:Double x:Key="DisplayResultFontSize">46</x:Double>
+    <x:Double x:Key="DisplayExpressionFontSize">15</x:Double>
+    <x:Double x:Key="HeaderTitleFontSize">20</x:Double>
+    <x:Double x:Key="ButtonDefaultFontSize">15</x:Double>
+    <x:Double x:Key="ButtonNumberFontSize">19</x:Double>
+    <x:Double x:Key="ButtonScientificFontSize">13</x:Double>
+    <x:Double x:Key="ButtonMemoryFontSize">12</x:Double>
+    <x:Double x:Key="SettingsHeadingFontSize">17</x:Double>
+    <x:Double x:Key="SettingsSubFontSize">13</x:Double>
+
+    <x:Double x:Key="ButtonCornerRadius">6</x:Double>
+    <x:Double x:Key="ButtonBorderWidth">1</x:Double>
+    
+    <Thickness x:Key="ButtonGridMargin">2.5</Thickness>
+    <Thickness x:Key="PageMargin">12</Thickness>
+    <Thickness x:Key="DisplayMargin">12,10,12,10</Thickness>
+
+    <!-- ======================================================== -->
+    <!-- SAYFA STİLİ (ARKA PLAN TEMAYA GÖRE DEĞİŞİR)              -->
+    <!-- ======================================================== -->
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource PageBgLight}, Dark={StaticResource PageBgDark}}" />
+    </Style>
+
+    <!-- ======================================================== -->
+    <!-- EKRAN (LABEL) STİLLERİ                                   -->
+    <!-- ======================================================== -->
+    
+    <!-- Başlık (Header) Etiketi -->
+    <Style x:Key="HeaderTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource HeaderTitleFontSize}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- Geçmiş / İşlem İfadesi (Örn: 5 + 3 =) -->
+    <Style x:Key="DisplayExpressionStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource DisplayExpressionFontSize}" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="VerticalTextAlignment" Value="End" />
+        <Setter Property="LineBreakMode" Value="TailTruncation" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightSecondary}, Dark={StaticResource TextDarkSecondary}}" />
+    </Style>
+
+    <!-- Ana Sonuç / Giriş Ekranı (Örn: 8) -->
+    <Style x:Key="DisplayResultStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource DisplayResultFontSize}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HorizontalTextAlignment" Value="End" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="LineBreakMode" Value="TailTruncation" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- ======================================================== -->
+    <!-- ORTAK TEMEL BUTON STİLİ (FİZİKSEL BASMA HİSSİYATI EKLENDİ)-->
+    <!-- ======================================================== -->
+    <Style x:Key="BaseButtonStyle" TargetType="Button">
+        <Setter Property="CornerRadius" Value="{StaticResource ButtonCornerRadius}" />
+        <Setter Property="BorderWidth" Value="{StaticResource ButtonBorderWidth}" />
+        <Setter Property="Margin" Value="{StaticResource ButtonGridMargin}" />
+        <Setter Property="FontSize" Value="{StaticResource ButtonDefaultFontSize}" />
+        <Setter Property="FontAutoScalingEnabled" Value="True" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderColor" 
+                Value="{AppThemeBinding Light={StaticResource BorderLight}, Dark={StaticResource BorderDark}}" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnOperatorBgLight}, Dark={StaticResource BtnOperatorBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+
+        <!-- Tuşlara basma ve hover hissiyatı: Normal, Hover (büyüme), Pressed (içeri çökme) -->
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="1.0" />
+                            <Setter Property="Opacity" Value="1.0" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="PointerOver">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="1.02" />
+                            <Setter Property="Opacity" Value="0.9" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="0.93" />
+                            <Setter Property="Opacity" Value="0.75" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- ======================================================== -->
+    <!-- 1. ÖRTÜK (IMPLICIT) BUTON STİLİ                          -->
+    <!-- (Ödev Şartı: Butonlar için x:Key'siz ortak örtük stil)   -->
+    <!-- ======================================================== -->
+    <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}" />
+
+    <!-- ======================================================== -->
+    <!-- 2. AÇIK (EXPLICIT) BUTON STİLLERİ (BasedOn İLE TÜRETİLDİ)-->
+    <!-- (Ödev Şartı: x:Key ile adlandırılmış ve BasedOn kullanan)-->
+    <!-- ======================================================== -->
+
+    <!-- Rakam Butonları Stili (0-9, Virgül, +/-) -->
+    <Style x:Key="NumberButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonNumberFontSize}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnNumberBgLight}, Dark={StaticResource BtnNumberBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- İşlem (Operatör) Butonları Stili (+, -, ×, ÷) -->
+    <Style x:Key="OperatorButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonDefaultFontSize}" />
+        <Setter Property="FontAttributes" Value="None" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnOperatorBgLight}, Dark={StaticResource BtnOperatorBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- Eşittir Butonu Stili (=) (Canlı elektrik mavisi) -->
+    <Style x:Key="EqualButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonNumberFontSize}" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnEqualBgLight}, Dark={StaticResource BtnEqualBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnEqualTextLight}, Dark={StaticResource BtnEqualTextDark}}" />
+        <Setter Property="BorderWidth" Value="0" />
+    </Style>
+
+    <!-- Bilimsel Fonksiyon Butonları Stili (sin, cos, log, exp vb.) -->
+    <Style x:Key="ScientificButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonScientificFontSize}" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnScientificBgLight}, Dark={StaticResource BtnScientificBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- Temizleme ve Silme Butonları Stili (C, CE, Backspace) -->
+    <Style x:Key="ClearButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonDefaultFontSize}" />
+        <Setter Property="BackgroundColor" 
+                Value="{AppThemeBinding Light={StaticResource BtnOperatorBgLight}, Dark={StaticResource BtnOperatorBgDark}}" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightPrimary}, Dark={StaticResource TextDarkPrimary}}" />
+    </Style>
+
+    <!-- Hafıza Butonları Stili (MC, MR, M+, M-, MS) -->
+    <Style x:Key="MemoryButtonStyle" TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+        <Setter Property="FontSize" Value="{StaticResource ButtonMemoryFontSize}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="TextColor" 
+                Value="{AppThemeBinding Light={StaticResource TextLightSecondary}, Dark={StaticResource TextDarkSecondary}}" />
+    </Style>
+
+</ResourceDictionary>

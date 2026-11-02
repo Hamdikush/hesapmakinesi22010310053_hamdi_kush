@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CalculatorApp.Views.ScientificPage"
+             Title="Bilimsel">
+
+    <!-- Sayfa Ana Düzeni -->
+    <Grid Margin="{StaticResource PageMargin}"
+          RowDefinitions="Auto,Auto,Auto,Auto,*"
+          ColumnDefinitions="*">
+
+        <!-- 1. ÜST BAŞLIK ALANI -->
+        <Grid Grid.Row="0" Margin="4,0,4,6" ColumnDefinitions="Auto,*">
+            <Label Grid.Column="0" 
+                   Text="Bilimsel" 
+                   Style="{StaticResource HeaderTitleStyle}" />
+        </Grid>
+
+        <!-- 2. HESAPLAMA GEÇMİŞİ / İFADE GÖSTERGESİ -->
+        <Label Grid.Row="1" 
+               x:Name="ExpressionLabel"
+               Text="" 
+               Style="{StaticResource DisplayExpressionStyle}" 
+               HeightRequest="22"
+               Margin="0,0,8,0" />
+
+        <!-- 3. ANA SAYI / SONUÇ GÖSTERGESİ -->
+        <Label Grid.Row="2" 
+               x:Name="ResultLabel"
+               Text="0" 
+               Style="{StaticResource DisplayResultStyle}" 
+               Margin="0,0,8,6" />
+
+        <!-- 4. MOD VE HAFIZA ÇUBUĞU (DEG/RAD, MC, MR, M+, M-, MS) -->
+        <Grid Grid.Row="3" 
+              Margin="0,0,0,6"
+              ColumnDefinitions="Auto,*,*,*,*,*">
+            <Button Grid.Column="0" 
+                    x:Name="DegRadButton" 
+                    Text="DEG" 
+                    Style="{StaticResource MemoryButtonStyle}" 
+                    FontAttributes="Bold"
+                    Clicked="OnToggleDegRadClicked" />
+            <Button Grid.Column="1" Text="MC" Style="{StaticResource MemoryButtonStyle}" Clicked="OnMemoryClearClicked" />
+            <Button Grid.Column="2" Text="MR" Style="{StaticResource MemoryButtonStyle}" Clicked="OnMemoryRecallClicked" />
+            <Button Grid.Column="3" Text="M+" Style="{StaticResource MemoryButtonStyle}" Clicked="OnMemoryAddClicked" />
+            <Button Grid.Column="4" Text="M-" Style="{StaticResource MemoryButtonStyle}" Clicked="OnMemorySubtractClicked" />
+            <Button Grid.Column="5" Text="MS" Style="{StaticResource MemoryButtonStyle}" Clicked="OnMemoryStoreClicked" />
+        </Grid>
+
+        <!-- 5. BİLİMSEL HESAP MAKİNESİ TUŞ TAKIMI (GRID 7 Satır x 5 Sütun) -->
+        <Grid Grid.Row="4" 
+              RowDefinitions="*,*,*,*,*,*,*" 
+              ColumnDefinitions="*,*,*,*,*">
+
+            <!-- SATIR 0: π, e, C, CE, ⌫ -->
+            <Button Grid.Row="0" Grid.Column="0" Text="π" Style="{StaticResource ScientificButtonStyle}" Clicked="OnConstantClicked" CommandParameter="pi" />
+            <Button Grid.Row="0" Grid.Column="1" Text="e" Style="{StaticResource ScientificButtonStyle}" Clicked="OnConstantClicked" CommandParameter="e" />
+            <Button Grid.Row="0" Grid.Column="2" Text="C" Style="{StaticResource ClearButtonStyle}" Clicked="OnClearAllClicked" />
+            <Button Grid.Row="0" Grid.Column="3" Text="CE" Style="{StaticResource ClearButtonStyle}" Clicked="OnClearEntryClicked" />
+            <Button Grid.Row="0" Grid.Column="4" Text="⌫" Style="{StaticResource ClearButtonStyle}" Clicked="OnBackspaceClicked" />
+
+            <!-- SATIR 1: x², 1/x, |x|, exp, mod -->
+            <Button Grid.Row="1" Grid.Column="0" Text="x²" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="sqr" />
+            <Button Grid.Row="1" Grid.Column="1" Text="1/x" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="recip" />
+            <Button Grid.Row="1" Grid.Column="2" Text="|x|" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="abs" />
+            <Button Grid.Row="1" Grid.Column="3" Text="exp" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="exp" />
+            <Button Grid.Row="1" Grid.Column="4" Text="mod" Style="{StaticResource ScientificButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="mod" />
+
+            <!-- SATIR 2: 2√x, sin, cos, tan, ÷ -->
+            <Button Grid.Row="2" Grid.Column="0" Text="²√x" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="sqrt" />
+            <Button Grid.Row="2" Grid.Column="1" Text="sin" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="sin" />
+            <Button Grid.Row="2" Grid.Column="2" Text="cos" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="cos" />
+            <Button Grid.Row="2" Grid.Column="3" Text="tan" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="tan" />
+            <Button Grid.Row="2" Grid.Column="4" Text="÷" Style="{StaticResource OperatorButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="/" />
+
+            <!-- SATIR 3: x^y, 7, 8, 9, × -->
+            <Button Grid.Row="3" Grid.Column="0" Text="xʸ" Style="{StaticResource ScientificButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="pow" />
+            <Button Grid.Row="3" Grid.Column="1" Text="7" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="3" Grid.Column="2" Text="8" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="3" Grid.Column="3" Text="9" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="3" Grid.Column="4" Text="×" Style="{StaticResource OperatorButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="*" />
+
+            <!-- SATIR 4: 10^x, 4, 5, 6, - -->
+            <Button Grid.Row="4" Grid.Column="0" Text="10ˣ" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="10pow" />
+            <Button Grid.Row="4" Grid.Column="1" Text="4" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="4" Grid.Column="2" Text="5" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="4" Grid.Column="3" Text="6" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="4" Grid.Column="4" Text="-" Style="{StaticResource OperatorButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="-" />
+
+            <!-- SATIR 5: log, 1, 2, 3, + -->
+            <Button Grid.Row="5" Grid.Column="0" Text="log" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="log" />
+            <Button Grid.Row="5" Grid.Column="1" Text="1" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="5" Grid.Column="2" Text="2" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="5" Grid.Column="3" Text="3" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="5" Grid.Column="4" Text="+" Style="{StaticResource OperatorButtonStyle}" Clicked="OnOperatorClicked" CommandParameter="+" />
+
+            <!-- SATIR 6: ln, n!, 0, ,, = -->
+            <Button Grid.Row="6" Grid.Column="0" Text="ln" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="ln" />
+            <Button Grid.Row="6" Grid.Column="1" Text="n!" Style="{StaticResource ScientificButtonStyle}" Clicked="OnUnaryOperatorClicked" CommandParameter="fact" />
+            <Button Grid.Row="6" Grid.Column="2" Text="0" Style="{StaticResource NumberButtonStyle}" Clicked="OnDigitClicked" />
+            <Button Grid.Row="6" Grid.Column="3" Text="," Style="{StaticResource NumberButtonStyle}" Clicked="OnDecimalClicked" />
+            <Button Grid.Row="6" Grid.Column="4" Text="=" Style="{StaticResource EqualButtonStyle}" Clicked="OnEqualsClicked" />
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
