@@ -5,7 +5,6 @@ Bartın Üniversitesi Bilgisayar Mühendisliği Bölümü **BSM352 / BSM322 Gör
 ---
 
 ## 🎥 Video Anlatımı & Öğrenci Bilgileri
-- **Video Linki:** [https://youtu.be/cS2mv2ILXqg](https://youtu.be/cS2mv2ILXqg)
 - **Öğrenci:** Hamdi Kuş
 - **Numara:** 22010310053
 
