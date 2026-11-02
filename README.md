@@ -5,9 +5,9 @@ Bu proje, Bartın Üniversitesi Bilgisayar Mühendisliği Bölümü **BSM352 / B
 ---
 
 ## 🎥 Video Anlatımı & Sunum
-- **Video Linki:** [YouTube / Drive Video Linkinizi Buraya Ekleyin] *(Maksimum 5 dakika)*
-- **Öğrenci Adı Soyadı:** [Adınız Soyadınız]
-- **Öğrenci Numarası:** [Öğrenci Numaranız]
+- **Video Linki:** [https://youtu.be/cS2mv2ILXqg](https://youtu.be/cS2mv2ILXqg)
+- **Öğrenci Adı Soyadı:** Hamdi Kuş
+- **Öğrenci Numarası:** 22010310053
 
 ---
 
